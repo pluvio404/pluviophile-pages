@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pluviophile - AI数字人助手</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="config.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 顶部导航栏 -->
+        <nav class="navbar">
+            <div class="nav-left">
+                <h1 class="logo">✨ Pluviophile</h1>
+                <span class="subtitle">初音未来主题AI助手</span>
+            </div>
+            <div class="nav-right">
+                <div class="user-info">
+                    <span class="username" id="username">Loading...</span>
+                    <span class="level">Lv.<span id="user-level">1</span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <!-- 侧边栏标签页 -->
+            <div class="sidebar">
+                <button class="tab-btn active" data-tab="dashboard">
+                    <span class="icon">📊</span>
+                    <span class="label">Dashboard</span>
+                </button>
+                <button class="tab-btn" data-tab="skills">
+                    <span class="icon">💪</span>
+                    <span class="label">Skills</span>
+                </button>
+                <button class="tab-btn" data-tab="memory">
+                    <span class="icon">🧠</span>
+                    <span class="label">Memory</span>
+                </button>
+                <button class="tab-btn" data-tab="logs">
+                    <span class="icon">📝</span>
+                    <span class="label">Logs</span>
+                </button>
+                <button class="tab-btn" data-tab="chat">
+                    <span class="icon">💬</span>
+                    <span class="label">Chat</span>
+                </button>
+            </div>
+
+            <!-- 内容区域 -->
+            <div class="content-area">
+                <!-- Dashboard页面 -->
+                <div class="page active" id="page-dashboard">
+                    <h2 class="page-title">📊 Dashboard</h2>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">等级</div>
+                            <div class="stat-value" id="stat-level">1</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">经验值</div>
+                            <div class="stat-value">
+                                <span id="stat-exp">0</span> / <span id="stat-exp-max">500</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">健康分</div>
+                            <div class="stat-value" id="stat-health">50.0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">学习技能</div>
+                            <div class="stat-value" id="stat-skills">0</div>
+                        </div>
+                    </div>
+
+                    <div class="welcome-message">
+                        <h3>欢迎回来！ 🎉</h3>
+                        <p>这是你的AI数字人助手Dashboard</p>
+                        <p class="status-text">系统运行正常 ✅</p>
+                    </div>
+                </div>
+
+                <!-- Skills页面 -->
+                <div class="page" id="page-skills">
+                    <h2 class="page-title">💪 Skills</h2>
+                    <div class="page-content">
+                        <p>技能系统功能开发中...</p>
+                    </div>
+                </div>
+
+                <!-- Memory页面 -->
+                <div class="page" id="page-memory">
+                    <h2 class="page-title">🧠 Memory</h2>
+                    <div class="page-content">
+                        <p>记忆系统功能开发中...</p>
+                    </div>
+                </div>
+
+                <!-- Logs页面 -->
+                <div class="page" id="page-logs">
+                    <h2 class="page-title">📝 Logs</h2>
+                    <div class="page-content">
+                        <p>活动日志功能开发中...</p>
+                    </div>
+                </div>
+
+                <!-- Chat页面 -->
+                <div class="page" id="page-chat">
+                    <h2 class="page-title">💬 Chat</h2>
+                    <div class="page-content">
+                        <p>对话功能开发中...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部状态栏 -->
+        <footer class="status-bar">
+            <div class="status-left">
+                <span class="status-indicator online"></span>
+                <span>系统运行中</span>
+            </div>
+            <div class="status-right">
+                <span id="current-time">--:--:--</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
