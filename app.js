@@ -8,7 +8,7 @@
 const DATA_BASE = window.location.pathname.includes('/pluviophile-pages/')
     ? 'data'  // GitHub Pages
     : (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-        ? 'data'  // 本地开发（直接访问docs/目录时）
+        ? '/static/data'  // 本地开发（通过FastAPI）
         : 'data');  // 默认
 
 // 初始化应用
@@ -128,12 +128,12 @@ function renderTypeChart(distribution) {
     chartDiv.innerHTML = html;
 }
 
-// ===== 渲染技能列表 =====
+// ===== 渲染技能列表（按分类） =====
 function renderSkills(skills) {
-    const grid = document.getElementById('skills-grid');
+    const container = document.getElementById('skills-grid');
     
     if (!skills || skills.length === 0) {
-        grid.innerHTML = `
+        container.innerHTML = `
             <div class="empty-state">
                 <h3>📭 还没有技能</h3>
                 <p>在CodeFlicker IDE中创建你的第一个技能：</p>
@@ -143,27 +143,59 @@ function renderSkills(skills) {
         return;
     }
     
-    grid.innerHTML = skills.map(skill => `
-        <div class="skill-card">
-            <div class="skill-header">
-                <div class="skill-name">${escapeHtml(skill.name)}</div>
-                <span class="skill-type ${skill.type}">${skill.type}</span>
-            </div>
-            <div class="skill-description">
-                ${escapeHtml(skill.description) || '暂无描述'}
-            </div>
-            <div class="skill-stats">
-                <span>⚡ 执行: ${skill.stats.execution_count}次</span>
-                <span>✅ 成功率: ${skill.stats.success_rate}%</span>
-                <span>❤️ 健康分: ${skill.stats.health_score}</span>
-            </div>
-            ${skill.tags && skill.tags.length > 0 ? `
-                <div class="skill-tags">
-                    ${skill.tags.map(tag => `<span class="skill-tag">${escapeHtml(tag)}</span>`).join('')}
+    // 按分类分组
+    const categoryNames = {
+        "general": "💎 通用技能",
+        "network": "🌐 网络运维",
+        "code": "💻 代码相关",
+        "analysis": "📊 数据分析",
+        "automation": "🤖 自动化",
+        "security": "🔒 安全防护"
+    };
+    
+    const skillsByCategory = {};
+    skills.forEach(skill => {
+        const cat = skill.category || 'general';
+        if (!skillsByCategory[cat]) {
+            skillsByCategory[cat] = [];
+        }
+        skillsByCategory[cat].push(skill);
+    });
+    
+    // 渲染每个分类
+    let html = '';
+    for (const [category, categorySkills] of Object.entries(skillsByCategory)) {
+        html += `
+            <div class="skills-category">
+                <h3 class="category-title">${categoryNames[category] || category}</h3>
+                <div class="skills-grid-inner">
+                    ${categorySkills.map(skill => `
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <div class="skill-name">${escapeHtml(skill.name)}</div>
+                                <span class="skill-type ${skill.type}">${skill.type}</span>
+                            </div>
+                            <div class="skill-description">
+                                ${escapeHtml(skill.description) || '暂无描述'}
+                            </div>
+                            <div class="skill-stats">
+                                <span>⚡ 执行: ${skill.stats.execution_count}次</span>
+                                <span>✅ 成功率: ${skill.stats.success_rate}%</span>
+                                <span>❤️ 健康分: ${skill.stats.health_score}</span>
+                            </div>
+                            ${skill.tags && skill.tags.length > 0 ? `
+                                <div class="skill-tags">
+                                    ${skill.tags.map(tag => `<span class="skill-tag">${escapeHtml(tag)}</span>`).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `).join('')}
                 </div>
-            ` : ''}
-        </div>
-    `).join('');
+            </div>
+        `;
+    }
+    
+    container.innerHTML = html;
 }
 
 // ===== 渲染活动列表 =====

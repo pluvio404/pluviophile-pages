@@ -4,6 +4,7 @@
     "name": "端口扫描",
     "description": "",
     "type": "native",
+    "category": "network",
     "tags": [
       "网络",
       "安全"
@@ -23,6 +24,7 @@
     "name": "日志分析",
     "description": "",
     "type": "semantic",
+    "category": "analysis",
     "tags": [
       "分析",
       "日志"
@@ -42,6 +44,7 @@
     "name": "Ping检测",
     "description": "检测网络连通性",
     "type": "native",
+    "category": "network",
     "tags": [
       "网络",
       "诊断",

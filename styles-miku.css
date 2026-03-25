@@ -459,25 +459,3 @@ body {
 .stat-icon:hover {
     animation: heartbeat 0.6s ease-in-out;
 }
-
-/* ===== 技能分类 ===== */
-.skills-category {
-    margin-bottom: 50px;
-}
-
-.category-title {
-    font-size: 1.8em;
-    margin-bottom: 25px;
-    padding-left: 20px;
-    border-left: 5px solid #FF9EC8;
-    background: linear-gradient(135deg, #FF9EC8 0%, #39C5BB 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.skills-grid-inner {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 25px;
-}
