@@ -4,9 +4,12 @@
  */
 
 // 数据路径配置
-const DATA_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    ? '/static/data'  // 本地开发（通过FastAPI的StaticFiles）
-    : 'data';  // GitHub Pages
+// 根据URL路径自动判断环境
+const DATA_BASE = window.location.pathname.includes('/pluviophile-pages/')
+    ? 'data'  // GitHub Pages
+    : (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'data'  // 本地开发（直接访问docs/目录时）
+        : 'data');  // 默认
 
 // 初始化应用
 document.addEventListener('DOMContentLoaded', () => {
