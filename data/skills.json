@@ -1,0 +1,60 @@
+[
+  {
+    "id": "skill_b9630a46",
+    "name": "端口扫描",
+    "description": "",
+    "type": "native",
+    "tags": [
+      "网络",
+      "安全"
+    ],
+    "is_active": true,
+    "stats": {
+      "execution_count": 0,
+      "success_count": 0,
+      "success_rate": 0.0,
+      "health_score": 1.0
+    },
+    "created_at": "2026-03-24T17:46:30.167828",
+    "last_execution_at": null
+  },
+  {
+    "id": "skill_6352398a",
+    "name": "日志分析",
+    "description": "",
+    "type": "semantic",
+    "tags": [
+      "分析",
+      "日志"
+    ],
+    "is_active": true,
+    "stats": {
+      "execution_count": 0,
+      "success_count": 0,
+      "success_rate": 0.0,
+      "health_score": 1.0
+    },
+    "created_at": "2026-03-24T17:46:30.066869",
+    "last_execution_at": null
+  },
+  {
+    "id": "skill_9ff249a1",
+    "name": "Ping检测",
+    "description": "检测网络连通性",
+    "type": "native",
+    "tags": [
+      "网络",
+      "诊断",
+      "测试"
+    ],
+    "is_active": true,
+    "stats": {
+      "execution_count": 1,
+      "success_count": 1,
+      "success_rate": 100.0,
+      "health_score": 1.0
+    },
+    "created_at": "2026-03-24T17:46:10.682571",
+    "last_execution_at": "2026-03-24T17:46:47.711179"
+  }
+]
